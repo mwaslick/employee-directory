@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EmployeeCard from "./EmployeeCard/EmployeeCard";
+import API from "../utils/API"
 
 class EmployeeContainer extends Component {
     state = {
@@ -7,15 +8,43 @@ class EmployeeContainer extends Component {
     }
 
     componentDidMount() {
-        fetch("https://randomuser.me/api/?results=200&nat=us")
-        .then((res) => res.json())
-        .then((data) => console.log(data))
+        API.getEmployees()
+        .then (res => {
+            this.setState({
+                employees: res.data.results
+            })
+        
+        })
+    }
+    
+    render() {
+        return (
+            <div>
+                {this.state.employees.map(employee => (
+                     <EmployeeCard
+                     picture= {employee.picture.medium}
+                     title= {employee.name.title}
+                     first= {employee.name.first}
+                     last= {employee.name.last}
+                     gender= {employee.gender}
+                     age = {employee.dob.age}
+                     stnumber = {employee.location.street.number}
+                     stname = {employee.location.street.name}
+                     city = {employee.location.city}
+                     state = {employee.location.state}
+                     postcode = {employee.location.postcode}
+                     email = {employee.email}
+                     phone = {employee.phone}
+                     />
+                ))}
+            </div>
+            
+        )
+        
     }
 
-    render() {
-        return <h1>Component Mounted</h1>
-    }
-};
+}
+
 
 export default EmployeeContainer;
 

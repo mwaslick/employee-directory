@@ -5,27 +5,27 @@ function EmployeeCard(props) {
   return (
     <div className="card">
       <div className="img-container">
-        <img alt={props.name.last} src={props.picture.medium} />
+        <img alt="img" src={props.picture} />
       </div>
       <div className="content">
         <ul>
           <li>
-            Name: {props.name.title} {props.name.first} {props.name.last}
+            Name: {props.title} {props.first} {props.last}
           </li>
           <li>
             Gender: {props.gender}
           </li>
           <li>
-            Age: {props.dob.age}
+            Age: {props.age}
           </li>
           <li>
-            Location: {props.location.street.number} {props.location.street.name} {props.location.city} {props.location.state} {props.location.postcode}
+            Location: {props.stnumber} {props.stname} {props.city}, {props.state} {props.postcode}
           </li>
           <li>
             E-mail: {props.email}
           </li>
           <li>
-            Phone: {props.location.phone}
+            Phone: {props.phone}
           </li>
         </ul>
       </div>
