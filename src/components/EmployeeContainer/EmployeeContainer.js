@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import EmployeeCard from "./EmployeeCard/EmployeeCard";
-import API from "../utils/API"
+import EmployeeCard from "../EmployeeCard/EmployeeCard";
+import API from "../../utils/API"
 
 class EmployeeContainer extends Component {
     state = {
