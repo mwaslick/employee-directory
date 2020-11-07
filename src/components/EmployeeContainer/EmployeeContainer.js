@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
+import Header from "../Header/Header";
 import API from "../../utils/API"
 import "./style.css"
 
 class EmployeeContainer extends Component {
     state = {
-        employees: []
+        employees: [],
+        sortedEmployees: []
     }
 
     componentDidMount() {
@@ -19,19 +21,24 @@ class EmployeeContainer extends Component {
     }
 
     sortEmployeeName() {
-        API.getEmployees()
-        .then(res => {
-            this.setState({
-                employees: res.data.results.sort((a,b) => (a.res.data.name.last - b.res.data.name.last))
-            })
+        this.setState({
+            employees: this.state.employees.sort((a,b) => a.name.last - b.name.last)
         })
     }
     
+    
     render() {
+
         return (
             <div>
+                <Header 
+                />
+        
+                <button className="btn btn-primary" onClick={()=> this.sortEmployeeName()}>sort</button>
+
                 {this.state.employees.map(employee => (
                      <EmployeeCard
+                     key = {employee.id.value}
                      picture= {employee.picture.medium}
                      title= {employee.name.title}
                      first= {employee.name.first}
