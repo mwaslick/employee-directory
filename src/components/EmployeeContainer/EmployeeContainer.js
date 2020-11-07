@@ -1,30 +1,79 @@
 import React, { Component } from "react";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import Header from "../Header/Header";
+import Searchbar from "../Searchbar/Searchbar"
 import API from "../../utils/API"
 import "./style.css"
 
 class EmployeeContainer extends Component {
     state = {
         employees: [],
-        sortedEmployees: []
+        calledEmployees: [],
+        sortedEmployees1: [],
+        sortedEmployees2: [], 
+        filteredEmployees: []
     }
 
     componentDidMount() {
         API.getEmployees()
         .then (res => {
+            const calledEmployees= res.data.results
             this.setState({
-                employees: res.data.results
+                employees: calledEmployees
             })
         
         })
     }
 
-    sortEmployeeName() {
-        this.setState({
-            employees: this.state.employees.sort((a,b) => a.name.last - b.name.last)
-        })
+    sortEmployeeNameAsc() {
+       const sortedEmployees1 = this.state.employees.sort((a, b) => {
+           if (a.name.last > b.name.last) {
+               return 1;
+           }
+           if (a.name.last < b.name.last) {
+               return -1;
+           } else {
+               return 0
+           }
+       })
+       this.setState({
+           employees: sortedEmployees1
+       })
     }
+
+    sortEmployeeNameDesc() {
+        const sortedEmployees2 = this.state.employees.sort((a, b) => {
+            if (a.name.last < b.name.last) {
+                return 1;
+            }
+            if (a.name.last > b.name.last) {
+                return -1;
+            } else {
+                return 0
+            }
+        })
+        this.setState({
+            employees: sortedEmployees2
+        })
+     }
+
+     filterEmployees = (employeeFilter) => {
+        let filteredEmployees = this.state.employees
+        filteredEmployees = filteredEmployees.filter((employee) => {
+            let employeeName = employee.name.first.toLowerCase() + employee.name.last.toLowerCase()
+            return employeeName.indexOf(
+                employeeFilter.toLowerCase()) !== -1
+        })
+        this.setState({
+            employees: filteredEmployees
+        })
+     }
+
+     refreshEmployees() {
+         this.setState({
+             employees: this.state.filteredEmployees
+         })
+     }
     
     
     render() {
@@ -33,8 +82,25 @@ class EmployeeContainer extends Component {
             <div>
                 <Header 
                 />
+
+                <div className="btn-group btn-group-toggle sortbuttons">
+                <button className="btn btn-primary" onClick={()=> this.sortEmployeeNameAsc()}>Last Name (Ascending)</button>
+
+                <button className="btn btn-primary" onClick={()=> this.sortEmployeeNameDesc()}>Last Name (Descending)</button>
+                </div>
+
+                <div className="searchbardiv">
+                <Searchbar employees={this.state.filteredEmployees} match={this.props.match} onChange= {this.filterEmployees} />
+
+                <button className= "btn btn-primary" onClick={() => this.refreshEmployees()}>Refresh</button>
+
+
+                </div>
+
+                
+
         
-                <button className="btn btn-primary" onClick={()=> this.sortEmployeeName()}>sort</button>
+                
 
                 {this.state.employees.map(employee => (
                      <EmployeeCard
