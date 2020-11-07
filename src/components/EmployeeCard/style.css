@@ -6,10 +6,15 @@
     margin-bottom: 20px;
 }
 
+.card-header {
+    background-color: #C7C4D5 !important;
+}
+
 .card-title {
-    font-size: 30px;
+    font-size: 35px;
     text-align: left;
     padding-left: 30px;
+    font-family: 'Kreon', serif;
 }
 
 .employeePicture {

@@ -80,10 +80,10 @@ class EmployeeContainer extends Component {
                 />
 
                 <div className= "row">
-                <div className="sortbuttons col-6"> 
+                <div className="sortbuttons col-sm-6 col-xs-12"> 
                 <div className= "row">
                     <label className="col-4 col-form-label">Sort Employees By:</label>
-                    <div className= "col-8 button-group">
+                    <div className= "col-8 btn-group">
                     <button type= "button" className="btn btn-dark" onClick={()=> this.sortEmployeeNameAsc()}>Last Name (Ascending)</button>
 
                     <button type= "button" className="btn btn-dark" onClick={()=> this.sortEmployeeNameDesc()}>Last Name (Descending)</button>
@@ -94,7 +94,7 @@ class EmployeeContainer extends Component {
                 </div>
     
 
-                <div className="searchbardiv col-6">
+                <div className="searchbardiv col-sm-6 col-xs-12">
                 <Searchbar employees={this.state.filteredEmployees} match={this.props.match} onChange= {this.filterEmployees} />
 
                 </div>
