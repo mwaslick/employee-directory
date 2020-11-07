@@ -19,7 +19,8 @@ class EmployeeContainer extends Component {
         .then (res => {
             const calledEmployees= res.data.results
             this.setState({
-                employees: calledEmployees
+                employees: calledEmployees,
+                filteredEmployees: calledEmployees
             })
         
         })
@@ -58,7 +59,7 @@ class EmployeeContainer extends Component {
      }
 
      filterEmployees = (employeeFilter) => {
-        let filteredEmployees = this.state.employees
+        let filteredEmployees = this.state.filteredEmployees
         filteredEmployees = filteredEmployees.filter((employee) => {
             let employeeName = employee.name.first.toLowerCase() + employee.name.last.toLowerCase()
             return employeeName.indexOf(
@@ -67,6 +68,7 @@ class EmployeeContainer extends Component {
         this.setState({
             employees: filteredEmployees
         })
+        console.log(employeeFilter)
      }
     
     
@@ -89,9 +91,6 @@ class EmployeeContainer extends Component {
 
                 </div>
 
-                
-
-        
                 
 
                 {this.state.employees.map(employee => (

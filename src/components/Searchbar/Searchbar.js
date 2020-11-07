@@ -19,7 +19,7 @@ class Searchbar extends Component {
   render() {
     return (
       <div>
-        <label htmlFor="filter">Filter by Employee Name: </label>
+        <label htmlFor="filter">Search Employee Name: </label>
         <input type="text" id="filter" 
           value={this.state.employeeFilter} 
           onChange={this.handleChange}/>
