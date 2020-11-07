@@ -18,12 +18,16 @@ class Searchbar extends Component {
   
   render() {
     return (
-      <div>
-        <label htmlFor="filter">Search Employee Name: </label>
-        <input type="text" id="filter" 
+    <form>
+      <div className="form-group row">
+        <label for="filter" className="col-4 col-form-label">Search Employee Name:</label>
+        <div className="col-6">
+        <input type="text" id="filter" className="form-control" 
           value={this.state.employeeFilter} 
           onChange={this.handleChange}/>
+        </div>
       </div>
+      </form>
       )
   }
 }

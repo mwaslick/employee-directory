@@ -1,0 +1,18 @@
+.content {
+    text-align: left;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 30px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.employeePicture {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

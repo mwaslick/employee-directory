@@ -79,28 +79,40 @@ class EmployeeContainer extends Component {
                 <Header 
                 />
 
-                <div className="btn-group btn-group-toggle sortbuttons">
-                <button className="btn btn-primary" onClick={()=> this.sortEmployeeNameAsc()}>Last Name (Ascending)</button>
+                <div className= "row">
+                <div className="sortbuttons col-6"> 
+                <div className= "row">
+                    <label className="col-4 col-form-label">Sort Employees By:</label>
+                    <div className= "col-8 button-group">
+                    <button type= "button" className="btn btn-dark" onClick={()=> this.sortEmployeeNameAsc()}>Last Name (Ascending)</button>
 
-                <button className="btn btn-primary" onClick={()=> this.sortEmployeeNameDesc()}>Last Name (Descending)</button>
+                    <button type= "button" className="btn btn-dark" onClick={()=> this.sortEmployeeNameDesc()}>Last Name (Descending)</button>
+                    </div>
+                        
+                    </div>
+
                 </div>
+    
 
-                <div className="searchbardiv">
+                <div className="searchbardiv col-6">
                 <Searchbar employees={this.state.filteredEmployees} match={this.props.match} onChange= {this.filterEmployees} />
 
+                </div>
+
 
                 </div>
+
+
+                
 
                 
 
                 {this.state.employees.map(employee => (
                      <EmployeeCard
                      key = {employee.id.value}
-                     picture= {employee.picture.medium}
-                     title= {employee.name.title}
+                     picture= {employee.picture.large}
                      first= {employee.name.first}
                      last= {employee.name.last}
-                     gender= {employee.gender}
                      age = {employee.dob.age}
                      stnumber = {employee.location.street.number}
                      stname = {employee.location.street.name}
