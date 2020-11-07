@@ -68,12 +68,6 @@ class EmployeeContainer extends Component {
             employees: filteredEmployees
         })
      }
-
-     refreshEmployees() {
-         this.setState({
-             employees: this.state.filteredEmployees
-         })
-     }
     
     
     render() {
@@ -91,8 +85,6 @@ class EmployeeContainer extends Component {
 
                 <div className="searchbardiv">
                 <Searchbar employees={this.state.filteredEmployees} match={this.props.match} onChange= {this.filterEmployees} />
-
-                <button className= "btn btn-primary" onClick={() => this.refreshEmployees()}>Refresh</button>
 
 
                 </div>
