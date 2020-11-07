@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EmployeeCard from "../EmployeeCard/EmployeeCard";
 import API from "../../utils/API"
+import "./style.css"
 
 class EmployeeContainer extends Component {
     state = {
@@ -14,6 +15,15 @@ class EmployeeContainer extends Component {
                 employees: res.data.results
             })
         
+        })
+    }
+
+    sortEmployeeName() {
+        API.getEmployees()
+        .then(res => {
+            this.setState({
+                employees: res.data.results.sort((a,b) => (a.res.data.name.last - b.res.data.name.last))
+            })
         })
     }
     
