@@ -13,6 +13,8 @@
 
 The Employee Directory application imports a directory of 200 users and displays their information on the page: this information includes their first and last names, photos, age, address, e-mail address, and phone number. While the employees are initially listed in a random order, users can click the buttons to sort the employees by last name, either ascending (alphabetical order) or descending (reverse alphabetical order). Users can also search the employees by name by typing into the search bar, which will update in real time according to the user's search keywords. This app uses React.js, Axios, and Bootstrap CSS Framework in order to operate.
 
+You can visit the deployed site at https://mw-employee-directory.herokuapp.com/.
+
 ## Screenshots
 
 Home Page
